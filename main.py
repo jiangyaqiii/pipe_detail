@@ -3,7 +3,7 @@ import json
 import aiohttp
 import asyncio
 from datetime import datetime, timedelta
-import sys
+import sys, traceback
 
 # ANSI 转义序列
 class Colors:
@@ -226,6 +226,7 @@ async def register_account():
                 logging.error(f"注册失败。状态: {response.status}, 错误信息: {error_message}")
         except Exception as e:
             logging.error(f"注册过程中发生错误: {e}")
+            print(traceback.format_exc())
 
 async def display_menu():
     """显示主菜单"""
