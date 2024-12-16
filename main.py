@@ -190,7 +190,6 @@ async def register_account():
     print("\n=== 账户注册 ===")
     email = input("请输入邮箱: ")
     password = input("请输入密码: ")
-    invite_code = input("请输入邀请码: ")
     
     # 进行注册
     async with aiohttp.ClientSession() as session:
@@ -198,7 +197,6 @@ async def register_account():
             data = {
                 "email": email,
                 "password": password,
-                "invite_code": invite_code
             }
             proxy = await load_proxies()
             if proxy:
@@ -231,18 +229,8 @@ async def register_account():
 
 async def display_menu():
     """显示主菜单"""
-    while True:
-        print("\n" + "="*50)
-        print(f"{Colors.CYAN}*X:https://x.com/ferdie_jhovie*")
-        print(f"首发pipe network脚本，盗脚本可耻，请标注出处")
-        print(f"*Tg:https://t.me/sdohuajia*{Colors.RESET}")
-        print("="*50)
-        print(f"\n{Colors.CYAN}请选择功能:{Colors.RESET}")
-        print(f"{Colors.WHITE}1. 运行节点{Colors.RESET}")
-        print(f"{Colors.WHITE}2. 注册账户{Colors.RESET}")
-        print(f"{Colors.WHITE}3. 退出程序\n{Colors.RESET}")
-        
-        await run_node()
+    # await run_node()
+    await register_account()
 
 async def run_node():
     """运行节点测试并显示多个token的分数"""
@@ -305,13 +293,6 @@ async def run_node():
         print("\n返回主菜单...")
 
 async def main():
-    print("""
-*****************************************************
-*           X:https://x.com/ferdie_jhovie           *
-*           Tg:https://t.me/sdohuajia               *
-*****************************************************
-""")
-    
     await display_menu()
 
 if __name__ == "__main__":
